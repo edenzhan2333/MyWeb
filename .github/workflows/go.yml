@@ -13,6 +13,8 @@ jobs:
 
   myci:
     runs-on: ubuntu-latest
+    env:
+      GO111MODULE: on
     steps:
     - name: Set up Go
       uses: actions/setup-go@v3
@@ -24,7 +26,7 @@ jobs:
     - name: Run Gosec Security Scanner
         uses: securego/gosec@master
         with:
-          args: gosec ./...
+          args: ./...
 
     - name: Build
       run: go build -v ./...
