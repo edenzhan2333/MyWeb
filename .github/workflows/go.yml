@@ -30,6 +30,12 @@ jobs:
       with:
         version: latest
 
+    - name: Run Gosec Security Scanner
+      run: |
+        export PATH=$PATH:$(go env GOPATH)/bin
+        go get github.com/securego/gosec/cmd/gosec
+        gosec ./...
+
     - name: Test
       run: go test -v ./...
 
